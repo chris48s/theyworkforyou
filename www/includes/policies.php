@@ -43,6 +43,7 @@ class Policies {
         array(6674, 'raising <b>welfare benefits</b> at least in line with prices'),
         array(6676, 'reforming the <b>NHS</b> so GPs buy services on behalf of their patients'),
         array(6677, 'restricting the provision of services to <b>private patients</b> by the NHS'),
+        array(6678, 'greater restrictions on <b>campaigning by third parties</b>, such as charities, during elections'),
         array(6679, 'reducing the rate of <b>corporation tax</b>'),
         array(6680, 'raising the threshold at which people start to pay <b>income tax</b>'),
         array(6681, 'increasing the tax rate applied to <b>income over £150,000</b>'),
