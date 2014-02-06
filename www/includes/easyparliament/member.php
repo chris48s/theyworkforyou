@@ -633,7 +633,7 @@ class MEMBER {
 
     public function the_users_mp() { return $this->the_users_mp; }
 
-    public function url($absolute = true) {
+    public function url($absolute = true, $page_type = 'member') {
         $house = $this->house_disp;
         if ($house == HOUSE_TYPE_COMMONS) {
             $URL = new URL('mp');
@@ -647,13 +647,29 @@ class MEMBER {
             $URL = new URL('royal');
         }
         $member_url = make_member_url($this->full_name(true), $this->constituency(), $house, $this->person_id());
-        if ($absolute)
-            return 'http://' . DOMAIN . $URL->generate('none') . $member_url;
-        else
-            return $URL->generate('none') . $member_url;
+
+        switch ($page_type) {
+
+            case 'votes':
+                if ($absolute)
+                    return 'http://' . DOMAIN . $URL->generate('none') . $member_url . '/votes';
+                else
+                    return $URL->generate('none') . $member_url . '/votes';
+                break;
+
+            case 'member':
+            default:
+                if ($absolute)
+                    return 'http://' . DOMAIN . $URL->generate('none') . $member_url;
+                else
+                    return $URL->generate('none') . $member_url;
+                break;
+
+        }
+
     }
 
-    public function display() {
+    public function display($member_page_type = 'member') {
         global $PAGE;
 
         $member = array (
@@ -671,9 +687,23 @@ class MEMBER {
             'the_users_mp'		=> $this->the_users_mp(),
             'current_member_anywhere'   => $this->current_member_anywhere(),
             'house_disp'		=> $this->house_disp,
+            'profile_url'       => $this->url(TRUE),
+            'votes_url'         => $this->url(TRUE, 'votes'),
         );
 
-        $PAGE->display_member($member, $this->extra_info);
+        switch ($member_page_type) {
+
+            case 'votes':
+                $PAGE->display_member_votes($member, $this->extra_info);
+                break;
+
+            case 'member':
+            default:
+                $PAGE->display_member($member, $this->extra_info);
+                break;
+
+        }
+
     }
 
     public function previous_mps() {

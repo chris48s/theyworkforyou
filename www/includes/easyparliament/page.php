@@ -1267,6 +1267,10 @@ pr()//-->
         include_once INCLUDESPATH . 'easyparliament/templates/html/person.php';
     }
 
+    public function display_member_votes($member, $extra_info) {
+        include_once INCLUDESPATH . 'easyparliament/templates/html/person-votes.php';
+    }
+
     public function error_message($message, $fatal = false, $status = 500) {
         // If $fatal is true, we exit the page right here.
         // $message is like the array used in $this->message()
