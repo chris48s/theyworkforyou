@@ -57,10 +57,10 @@ if ($member['party'] == 'Sinn Fein' && in_array(HOUSE_TYPE_COMMONS, $member['hou
 
             <div data-magellan-expedition="fixed" class="person-subnav">
                 <dl class="sub-nav">
-                    <dt data-magellan-arrival="profile"><a href="#profile">Profile</a></dt>
+                    <dt data-magellan-arrival="profile"><a href="<?= $member['profile_url'] ?>#profile">Profile</a></dt>
                     <dt data-magellan-arrival="votingrecord"><a href="#votingrecord">Voting<span class="hide-for-small"> record</span></a></dt>
-                    <dt data-magellan-arrival="hansard"><a href="#hansard">Appearances</a></dt>
-                    <dt data-magellan-arrival="register"><a href="#register">Register<span class="hide-for-small"> of interests</span></a></dt>
+                    <dt data-magellan-arrival="hansard"><a href="<?= $member['profile_url'] ?>#hansard">Appearances</a></dt>
+                    <dt data-magellan-arrival="register"><a href="<?= $member['profile_url'] ?>#register">Register<span class="hide-for-small"> of interests</span></a></dt>
                 </dl>
             </div>
 
