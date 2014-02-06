@@ -545,13 +545,21 @@ function person_voting_record($member, $extra_info) {
     $joined = $policies_object->joined;
 
     $got_dream = '';
+    $policies_count = 0;
+
     foreach ($policies as $policy) {
+        if ($policies_count > 4) {
+            break;
+        }
         if (isset($policy[2]) && $policy[2] && !in_array(HOUSE_TYPE_COMMONS, $member['houses']))
             continue;
-        $got_dream .= display_dream_comparison($extra_info, $member, $policy[0], $policy[1]);
-        if (isset($joined[$policy[0]])) {
-            $policy = $joined[$policy[0]];
+        if (display_dream_comparison($extra_info, $member, $policy[0], $policy[1]) != '') {
             $got_dream .= display_dream_comparison($extra_info, $member, $policy[0], $policy[1]);
+            $policies_count++;
+            if (isset($joined[$policy[0]])) {
+                $policy = $joined[$policy[0]];
+                $got_dream .= display_dream_comparison($extra_info, $member, $policy[0], $policy[1]);
+            }
         }
     }
 
