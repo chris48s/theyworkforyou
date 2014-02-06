@@ -431,40 +431,12 @@ function person_voting_record($member, $extra_info) {
 	</ul><?php
 	}
 
-    # ID, display string, MP only
-    $policies = array(
-	    array(996, "a <strong>transparent Parliament</strong>"),
-		array(811, "a <strong>smoking ban</strong>", true),
-		array(1051, "introducing <strong>ID cards</strong>"),
-		array(363, "introducing <strong>foundation hospitals</strong>"),
-		array(1052, "university <strong>tuition fees</strong>"),
-		array(1053, "Labour's <strong title='Including voting to maintain them'>anti-terrorism laws</strong>", true),
-		array(1049, "the <strong>Iraq war</strong>"),
-		array(984, "replacing <strong>Trident</strong>"),
-		array(1050, "the <strong>hunting ban</strong>"),
-		array(826, "equal <strong>gay rights</strong>"),
-		array(1030, "laws to <strong>stop climate change</strong>"),
-		array(1074, "greater <strong>autonomy for schools</strong>"),
-		array(1071, "allowing ministers to <strong>intervene in inquests</strong>"),
-		array(1079, "removing <strong>hereditary peers</strong> from the House of Lords"),
-        array(1087, "a <strong>stricter asylum system</strong>"),
-        array(1065, "more <strong>EU integration</strong>"),
-        array(1110, "increasing the <strong>rate of VAT</strong>"),
-        array(1084, "a more <a href='http://en.wikipedia.org/wiki/Proportional_representation'>proportional system</a> for electing MPs"),
-        array(1124, "automatic enrolment in occupational pensions"),
-        # Unfinished
-		# array(856, "the <strong>changes to parliamentary scrutiny in the <a href=\"http://en.wikipedia.org/wiki/Legislative_and_Regulatory_Reform_Bill\">Legislative and Regulatory Reform Bill</a></strong>"),
-		# array(1080, "government budgets and associated measures"),
-		# array(1077, "equal extradition terms with the US"),
-    );
-    shuffle($policies);
+    require_once(INCLUDESPATH . 'policies.php');
 
-    $joined = array(
-        1079 => array(837, "a <strong>wholly elected</strong> House of Lords"),
-        1049 => array(975, "an <strong>investigation</strong> into the Iraq war"),
-        1052 => array(1132, 'raising England&rsquo;s undergraduate tuition fee cap to &pound;9,000 per year'),
-        1124 => array(1109, "encouraging occupational pensions"),
-    );
+    $policies_object = new TheyWorkForYou\Policies;
+
+    $policies = $policies_object->shuffle()->policies;
+    $joined = $policies_object->joined;
 
 	$got_dream = '';
     foreach ($policies as $policy) {
