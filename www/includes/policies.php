@@ -45,6 +45,7 @@ class Policies {
         array(6677, 'restricting the provision of services to <b>private patients</b> by the NHS'),
         array(6679, 'reducing the rate of <b>corporation tax</b>'),
         array(6680, 'raising the threshold at which people start to pay <b>income tax</b>'),
+        array(6681, 'increasing the tax rate applied to <b>income over £150,000</b>'),
     );
 
     /*
