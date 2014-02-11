@@ -580,19 +580,14 @@ function person_voting_record($member, $extra_info) {
         }
 ?>
 
-<h3>How <?=$member['full_name']?> voted on key issues<?=$since?></h3>
+<h3>How <?=$member['full_name']?> voted on a selection of key issues<?=$since?></h3>
 <ul class="no-bullet" id="dreamcomparisons">
 <?=$got_dream ?>
 </ul>
 <?php
     }
 
-    // Link to complete votes page
-    ?>
-    <p class="morelink"><a href="<?= $member['votes_url'] ?>">See how <?=$member['full_name']?> voted on all key issues</a></p>
-    <?php
-
-    // Links to full records on TWFY, The Guardian and Public Whip
+    // Links to full record at Guardian and Public Whip
     $record = array();
     if (isset($extra_info['guardian_howtheyvoted'])) {
         $record[] = '<a href="' . $extra_info['guardian_howtheyvoted'] . '" title="At The Guardian">well-known issues</a> <small>(from the Guardian)</small>';
